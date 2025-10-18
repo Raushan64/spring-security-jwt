@@ -1,0 +1,45 @@
+Why JWT comes over spring-security ?
+Spring Security:
+- from filter, request is delegate to AuthenticationManager for Authenticate.
+- each and every requests, you need to provide the  login credential (user/pass) which is very hectic and tidious. to over come this JWT has introduce.
+JWT:
+- At first time ask the user credential(user/pass) and create the token, then for next time they just pass the token and they are able to access the end-point.
+
+How JWT token has generated?
+Decoded:
+Header - It contains algorithm and token type
+Payload - It contains user-name, expiration of token
+Verify Signature - It contains secret and validate header/payload/secret, by using those properties it generate the token.
+Note: each Header/Payload/Verify Signature having own color to differentiate it
+      All components (Header/Payload/Verify Signature) called as claim in JWT
+
+Work flow of spring-security and jwt
+1. first invoke the endpoint from controller
+2. check the token from request header
+3. extract the header token and get the username/token expiration time..., and validate these details(username/token-exp-time) from UserDetails(inbuild class of spring-security) and DB
+4. once validation succeeded then endpoint get the access.
+Note: JWT work on top of spring-security.
+
+How to insert the user credential in DB
+url: POST http://localhost:8080/products/new
+payload: {
+             "name": "kumar",
+             "password": "pwd1",
+             "email": "jone@example.com",
+             "roles": "ROLE_ADMIN"
+
+         }
+
+How to generate the token
+url: POST http://localhost:8080/products/authenticate
+payload: {
+             "username": "kumar",
+             "password": "pwd1"
+         }
+
+How to test endpoints
+attached the USER/ADMIN token in header
+url: GET http://localhost:8080/products/all, http://localhost:8080/products/12
+
+
+
