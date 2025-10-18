@@ -42,4 +42,8 @@ attached the USER/ADMIN token in header
 url: GET http://localhost:8080/products/all, http://localhost:8080/products/12
 
 
+Reference:
+https://www.youtube.com/watch?v=R76S0tfv36w&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=40
+https://www.youtube.com/watch?v=NcLtLZqGu2M&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=38
+
 
