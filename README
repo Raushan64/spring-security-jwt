@@ -46,4 +46,4 @@ Reference:
 https://www.youtube.com/watch?v=R76S0tfv36w&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=40
 https://www.youtube.com/watch?v=NcLtLZqGu2M&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=38
 
-
+Note: We user AuthenticationProvider, when we are talking to DB to authenticate and authorize the user detail like name, pass...
