@@ -2,6 +2,32 @@ Why JWT comes over spring-security ?
 Spring Security:
 - from filter, request is delegate to AuthenticationManager for Authenticate.
 - each and every requests, you need to provide the  login credential (user/pass) which is very hectic and tidious. to over come this JWT has introduce.
+
+Complete Spring-Security Lifecycle
+LOGIN REQUEST
+     ↓
+Security Filter Chain
+     ↓
+AuthenticationManager
+     ↓
+AuthenticationProvider
+     ↓
+UserDetailsService
+     ↓
+Database
+     ↓
+Authentication Success
+     ↓
+SecurityContextHolder
+     ↓
+Authorization
+     ↓
+Session (if session-based)
+     ↓
+Controller
+     ↓
+Response
+
 JWT:
 - At first time ask the user credential(user/pass) and create the token, then for next time they just pass the token and they are able to access the end-point.
 
@@ -19,6 +45,42 @@ Work flow of spring-security and jwt
 3. extract the header token and get the username/token expiration time..., and validate these details(username/token-exp-time) from UserDetails(inbuild class of spring-security) and DB
 4. once validation succeeded then endpoint get the access.
 Note: JWT work on top of spring-security.
+
+Complete JWT Request Lifecycle
+LOGIN
+=====
+Request
+ ↓
+Filter
+ ↓
+AuthenticationManager
+ ↓
+AuthenticationProvider
+ ↓
+UserDetailsService
+ ↓
+DB
+ ↓
+JWT Generated
+ ↓
+Client Stores Token
+
+
+API CALL
+========
+Request + JWT
+ ↓
+Security Filter Chain
+ ↓
+JWT Filter
+ ↓
+Validate Token(extract the JWT and validate)
+ ↓
+SecurityContextHolder
+ ↓
+Controller
+ ↓
+Response
 
 How to insert the user credential in DB
 url: POST http://localhost:8080/products/new
@@ -45,5 +107,3 @@ url: GET http://localhost:8080/products/all, http://localhost:8080/products/12
 Reference:
 https://www.youtube.com/watch?v=R76S0tfv36w&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=40
 https://www.youtube.com/watch?v=NcLtLZqGu2M&list=PL-fmmU4KUbPZZ9CzwdReK2IrzmbG-amiA&index=38
-
-Note: We user AuthenticationProvider, when we are talking to DB to authenticate and authorize the user detail like name, pass...
