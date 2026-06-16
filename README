@@ -61,10 +61,11 @@ UserDetailsService
  ↓
 DB
  ↓
+Authentication Success
+ ↓
 JWT Generated
  ↓
-Client Stores Token
-
+Response
 
 API CALL
 ========
@@ -74,9 +75,13 @@ Security Filter Chain
  ↓
 JWT Filter
  ↓
-Validate Token(extract the JWT and validate)
+Validate JWT (Extract JWT of Username, Expiry, Signature)
+ ↓
+Authentication Success
  ↓
 SecurityContextHolder
+ ↓
+Authorization
  ↓
 Controller
  ↓
